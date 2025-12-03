@@ -1,0 +1,287 @@
+================================================================================
+CROSS-VALIDATION REPORT: TESTING ALL MODELS WITH ALL RESAMPLING STRATEGIES
+================================================================================
+
+
+================================================================================
+Model: Logistic Regression
+================================================================================
+
+  Strategy: None (class_weight) → CV F1: 0.4594, Train F1: 0.4629, Gap: 0.0035 [GOOD ✓]
+
+  Strategy: SMOTE → CV F1: 0.3973, Train F1: 0.4435, Gap: 0.0462 [GOOD ✓]
+
+================================================================================
+Model: Random Forest
+================================================================================
+
+  Strategy: None (class_weight) → CV F1: 0.3929, Train F1: 0.6637, Gap: 0.2707 [OVERFITTING ⚠️]
+
+  Strategy: SMOTE → CV F1: 0.3651, Train F1: 0.6616, Gap: 0.2965 [OVERFITTING ⚠️]
+
+================================================================================
+Model: Decision Tree
+================================================================================
+
+  Strategy: None (class_weight) → CV F1: 0.4264, Train F1: 0.5242, Gap: 0.0978 [GOOD ✓]
+
+  Strategy: SMOTE → CV F1: 0.3770, Train F1: 0.5553, Gap: 0.1783 [OVERFITTING ⚠️]
+
+================================================================================
+COMPREHENSIVE RESULTS ANALYSIS
+================================================================================
+
+📊 Top 10 Configurations by CV F1-Score (PRIMARY SELECTION METRIC):
+              Model            Strategy  CV_F1_Mean  CV_Precision_Mean  CV_Recall_Mean  CV_ROC_AUC_Mean  CV_Accuracy_Mean
+Logistic Regression None (class_weight)    0.459426           0.381615        0.578134         0.704681          0.693947
+      Decision Tree None (class_weight)    0.426428           0.372073        0.506767         0.648960          0.691516
+Logistic Regression               SMOTE    0.397297           0.488353        0.336036         0.704033          0.771121
+      Random Forest None (class_weight)    0.392937           0.371058        0.418214         0.652883          0.709384
+      Decision Tree               SMOTE    0.376975           0.455826        0.322486         0.651890          0.760966
+      Random Forest               SMOTE    0.365065           0.457425        0.304415         0.662016          0.762389
+
+================================================================================
+DETAILED METRICS COMPARISON - ALL MODELS
+================================================================================
+
+📋 Complete Performance Metrics (Top 15):
+
+1. Logistic Regression + None (class_weight)
+   F1-Score:  0.4594 (±0.0114)
+   Precision: 0.3816
+   Recall:    0.5781
+   ROC-AUC:   0.7047
+   Accuracy:  0.6939
+
+2. Decision Tree + None (class_weight)
+   F1-Score:  0.4264 (±0.0195)
+   Precision: 0.3721
+   Recall:    0.5068
+   ROC-AUC:   0.6490
+   Accuracy:  0.6915
+
+3. Logistic Regression + SMOTE
+   F1-Score:  0.3973 (±0.0197)
+   Precision: 0.4884
+   Recall:    0.3360
+   ROC-AUC:   0.7040
+   Accuracy:  0.7711
+
+4. Random Forest + None (class_weight)
+   F1-Score:  0.3929 (±0.0133)
+   Precision: 0.3711
+   Recall:    0.4182
+   ROC-AUC:   0.6529
+   Accuracy:  0.7094
+
+5. Decision Tree + SMOTE
+   F1-Score:  0.3770 (±0.0242)
+   Precision: 0.4558
+   Recall:    0.3225
+   ROC-AUC:   0.6519
+   Accuracy:  0.7610
+
+6. Random Forest + SMOTE
+   F1-Score:  0.3651 (±0.0163)
+   Precision: 0.4574
+   Recall:    0.3044
+   ROC-AUC:   0.6620
+   Accuracy:  0.7624
+
+================================================================================
+OVERFITTING/UNDERFITTING ANALYSIS (INFORMATIONAL)
+================================================================================
+
+📈 Status Distribution:
+Status
+GOOD           3
+OVERFITTING    3
+
+Note: Overfitting status is informational. Best model is selected by CV F1-Score.
+
+⚠️ OVERFITTING Detected in 3 configurations:
+        Model            Strategy  Train_F1_Mean  CV_F1_Mean  Overfit_Gap_F1
+Random Forest               SMOTE       0.661554    0.365065        0.296489
+Random Forest None (class_weight)       0.663653    0.392937        0.270716
+Decision Tree               SMOTE       0.555311    0.376975        0.178336
+
+✓ GOOD Configurations (No Overfitting/Underfitting): 3
+              Model            Strategy  CV_F1_Mean  CV_ROC_AUC_Mean  Overfit_Gap_F1
+Logistic Regression None (class_weight)    0.459426         0.704681        0.003459
+      Decision Tree None (class_weight)    0.426428         0.648960        0.097777
+Logistic Regression               SMOTE    0.397297         0.704033        0.046248
+
+================================================================================
+4. DETAILED PREDICTION ANALYSIS
+================================================================================
+
+Total predictions: 2117
+Correct predictions: 1475
+Incorrect predictions: 642
+Accuracy: 0.6967
+
+Prediction Distribution (Confusion Matrix):
+Predicted     0    1   All
+Actual                    
+0          1187  430  1617
+1           212  288   500
+All        1399  718  2117
+
+False Positives: 430
+False Negatives: 212
+
+First 50 predictions:
+ Actual  Predicted  Probability_Claim  Correct
+      1          1           0.663765     True
+      0          0           0.478951     True
+      1          1           0.639277     True
+      1          1           0.512119     True
+      0          1           0.643717    False
+      0          0           0.439357     True
+      0          1           0.538829    False
+      0          1           0.653461    False
+      0          0           0.250020     True
+      0          0           0.350450     True
+      0          0           0.320969     True
+      0          0           0.472935     True
+      0          0           0.345640     True
+      0          0           0.297790     True
+      0          0           0.478283     True
+      1          1           0.905984     True
+      1          1           0.638740     True
+      1          1           0.961114     True
+      0          1           0.645341    False
+      0          0           0.253623     True
+      0          1           0.627432    False
+      0          0           0.322078     True
+      0          1           0.740875    False
+      0          0           0.319736     True
+      0          0           0.334194     True
+      0          0           0.346600     True
+      0          0           0.374940     True
+      0          0           0.340995     True
+      0          0           0.315601     True
+      1          1           0.645439     True
+      0          0           0.407730     True
+      1          0           0.403293    False
+      0          1           0.548006    False
+      0          0           0.247445     True
+      0          0           0.234260     True
+      0          0           0.240398     True
+      1          1           0.612571     True
+      0          0           0.451812     True
+      1          0           0.243352    False
+      1          0           0.436167    False
+      1          1           0.878382     True
+      1          1           0.990518     True
+      0          0           0.324828     True
+      0          0           0.282290     True
+      1          1           0.649719     True
+      0          0           0.498129     True
+      1          0           0.257707    False
+      0          0           0.326724     True
+      0          0           0.451243     True
+      0          0           0.311724     True
+
+Sample of False Positives (first 20):
+ Actual  Predicted  Probability_Claim  Correct
+      0          1           0.643717    False
+      0          1           0.538829    False
+      0          1           0.653461    False
+      0          1           0.645341    False
+      0          1           0.627432    False
+      0          1           0.740875    False
+      0          1           0.548006    False
+      0          1           0.556694    False
+      0          1           0.592642    False
+      0          1           0.822621    False
+      0          1           0.689596    False
+      0          1           0.614443    False
+      0          1           0.538549    False
+      0          1           0.639417    False
+      0          1           0.583127    False
+      0          1           0.554217    False
+      0          1           0.536947    False
+      0          1           0.658065    False
+      0          1           0.610902    False
+      0          1           0.774778    False
+
+Sample of False Negatives (first 20):
+ Actual  Predicted  Probability_Claim  Correct
+      1          0           0.403293    False
+      1          0           0.243352    False
+      1          0           0.436167    False
+      1          0           0.257707    False
+      1          0           0.333981    False
+      1          0           0.235631    False
+      1          0           0.490650    False
+      1          0           0.364779    False
+      1          0           0.297581    False
+      1          0           0.314480    False
+      1          0           0.301615    False
+      1          0           0.222900    False
+      1          0           0.326724    False
+      1          0           0.329527    False
+      1          0           0.339401    False
+      1          0           0.397787    False
+      1          0           0.483513    False
+      1          0           0.308774    False
+      1          0           0.462382    False
+      1          0           0.326913    False
+
+
+================================================================================
+5. COMPREHENSIVE FINAL SUMMARY
+================================================================================
+
+DATA OVERVIEW:
+  - Training samples: 4924
+  - Test samples: 2117
+  - Features: 9
+  - Class imbalance ratio: 3.45:1
+
+CROSS-VALIDATION APPROACH:
+  - Method: 5-Fold Stratified Cross-Validation
+  - Models tested: 3
+  - Resampling strategies tested: 2
+  - Total configurations: 6
+
+BEST MODEL SELECTED:
+  - Algorithm: Logistic Regression
+  - Resampling: None (class_weight)
+  - Cross-validation F1: 0.4594 (+/- 0.0114)
+  - Cross-validation ROC-AUC: 0.7047
+
+FINAL TEST PERFORMANCE:
+  - Accuracy: 0.6967
+  - F1-Score: 0.4729
+  - ROC-AUC: 0.7185
+  - Precision: 0.4011
+  - Recall: 0.5760
+
+OVERFITTING/UNDERFITTING ANALYSIS (Based on Train-CV F1 Gap):
+  - Train F1-Score: 0.4639
+  - Test F1-Score: 0.4729
+  - Overfit Gap (F1): -0.0090
+  - Detection Method: Primary = Train-CV F1 gap > 0.15
+                      Secondary = Multi-metric validation
+  - Status: ⚠️ UNDERFITTING DETECTED
+  - Recommendation: Model is underfitting. Consider: more complex model, feature engineering, or removing regularization.
+
+RESAMPLING EFFECTIVENESS:
+  - Configurations with good fit: 3
+  - Configurations with overfitting: 3
+  - Configurations with underfitting: 0
+  - Best strategy for avoiding overfitting: None (class_weight)
+
+KEY INSIGHTS:
+  ✓ Cross-validation ensured robust model selection
+  ✓ Tested 3 models × 2 strategies = 6 configurations
+  ✓ Identified and handled class imbalance appropriately
+  ✓ Per-model resampling strategy was optimized
+  ✓ Final model shows ⚠️ underfitting detected
+  ✓ Overfitting detection based on Train-CV F1 gap (primary metric)
+
+================================================================================
+END OF REPORT
+================================================================================

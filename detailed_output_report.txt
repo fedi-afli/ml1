@@ -1,0 +1,93 @@
+================================================================================
+INSURANCE CLAIM PREDICTION - DETAILED OUTPUT REPORT
+================================================================================
+
+1. DATA LOADING
+================================================================================
+Train shape: (5012, 13)
+Test shape: (2147, 13)
+
+Train columns: ['Customer Id', 'YearOfObservation', 'Insured_Period', 'Residential', 'Building_Painted', 'Building_Fenced', 'Garden', 'Settlement', 'Building Dimension', 'Building_Type', 'NumberOfWindows', 'Geo_Code', 'Claim']
+
+First 5 rows:
+  Customer Id  YearOfObservation  Insured_Period  Residential Building_Painted Building_Fenced Garden Settlement  Building Dimension    Building_Type NumberOfWindows Geo_Code Claim
+0      H13501               2012             1.0            1                N               V      V          U              1240.0      Wood-framed         without    75117   non
+1      H14962               2012             1.0            0                N               V      V          U               900.0  Non-combustible         without    62916   non
+2      H17755               2013             1.0            1                V               N      O          R              4984.0  Non-combustible               4    31149   oui
+3      H13369               2016             0.5            0                N               V      V          U               600.0      Wood-framed         without     6012   oui
+4      H12988               2012             1.0            0                N               V      V          U               900.0  Non-combustible         without    57631   non
+
+Data types:
+Customer Id            object
+YearOfObservation       int64
+Insured_Period        float64
+Residential             int64
+Building_Painted       object
+Building_Fenced        object
+Garden                 object
+Settlement             object
+Building Dimension    float64
+Building_Type          object
+NumberOfWindows        object
+Geo_Code               object
+Claim                  object
+
+Basic statistics:
+       YearOfObservation  Insured_Period  Residential  Building Dimension
+count        5012.000000     5012.000000  5012.000000         4935.000000
+mean         2013.660215        0.869713     0.301077         1876.898683
+std             1.383134        0.219496     0.458772         2267.277397
+min          2012.000000        0.500000     0.000000            1.000000
+25%          2012.000000        0.500000     0.000000          520.000000
+50%          2013.000000        1.000000     0.000000         1067.000000
+75%          2015.000000        1.000000     1.000000         2280.000000
+max          2016.000000        1.000000     1.000000        20840.000000
+
+
+================================================================================
+2. FEATURE-TARGET RELATIONSHIP ANALYSIS
+================================================================================
+
+
+================================================================================
+3. CORRELATION AND MUTUAL INFORMATION ANALYSIS
+================================================================================
+
+Top 10 Features by Correlation with Claim:
+                              Claim
+Claim                      1.000000
+Building Dimension         0.295465
+NumberOfWindows            0.153133
+Building_Type_Wood-framed  0.110515
+Insured_Period             0.070592
+Building_Fenced            0.068411
+Residential                0.055156
+Building_Type_Ordinary     0.019947
+Geo_Code                   0.000544
+YearOfObservation         -0.021486
+
+Top 10 Features by Mutual Information with Claim:
+                               Mutual_Info
+Building Dimension                0.049144
+Geo_Code                          0.017906
+Garden                            0.013126
+Building_Type_Wood-framed         0.009358
+NumberOfWindows                   0.008322
+Insured_Period                    0.007832
+Settlement_U                      0.006101
+Building_Fenced                   0.005733
+YearOfObservation                 0.004814
+Building_Type_Non-combustible     0.003425
+
+Feature Selection - Safety Check:
+--------------------------------------------------------------------------------
+Feature: Building_Painted               | MI: 0.0030 | Corr: -0.0389 → DROPPED
+Feature: Geo_Code                       | MI: 0.0179 | Corr: 0.0005 → DROPPED
+Feature: YearOfObservation              | MI: 0.0048 | Corr: -0.0215 → DROPPED
+Feature: Building_Type_Non-combustible  | MI: 0.0034 | Corr: -0.0355 → DROPPED
+
+Features dropped: ['Building_Painted', 'Geo_Code', 'YearOfObservation', 'Building_Type_Non-combustible']
+
+Final train shape: (4924, 10)
+Final features: ['Insured_Period', 'Residential', 'Building_Fenced', 'Garden', 'Building Dimension', 'NumberOfWindows', 'Settlement_U', 'Building_Type_Ordinary', 'Building_Type_Wood-framed', 'Claim']
+
